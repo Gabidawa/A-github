@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+  <meta charset="UTF-8">
+  <title>Menő Interaktív Oldal</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #0d1117, #161b22);
+      color: white;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 40px;
+      font-size: 3em;
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow {
+      from { text-shadow: 0 0 10px #58a6ff; }
+      to { text-shadow: 0 0 25px #58a6ff, 0 0 50px #58a6ff; }
+    }
+
+    .card {
+      background: #21262d;
+      margin: 30px auto;
+      padding: 20px;
+      width: 300px;
+      border-radius: 15px;
+      transition: transform 0.3s, box-shadow 0.3s;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: scale(1.05) rotate(1deg);
+      box-shadow: 0 0 25px #58a6ff;
+    }
+
+    button {
+      padding: 10px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #238636;
+      color: white;
+      font-size: 16px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #2ea043;
+      transform: scale(1.1);
+    }
+
+    #box {
+      width: 100px;
+      height: 100px;
+      background: #58a6ff;
+      margin: 30px auto;
+      border-radius: 10px;
+      position: relative;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>🔥 Interaktív Demo 🔥</h1>
+
+  <div class="card" onclick="changeColor()">
+    Kattints rám! 🎨
+  </div>
+
+  <button onclick="moveBox()">Mozgasd a dobozt 🚀</button>
+
+  <div id="box"></div>
+
+  <button onclick="randomAlert()">Random meglepetés 😄</button>
+
+  <script>
+    function changeColor() {
+      const colors = ["#ff7b72", "#58a6ff", "#3fb950", "#d29922"];
+      document.body.style.background =
+        colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    function moveBox() {
+      const box = document.getElementById("box");
+      box.style.left = Math.random() * 300 + "px";
+      box.style.top = Math.random() * 200 + "px";
+    }
+
+    function randomAlert() {
+      const messages = [
+        "Ez menő volt 😎",
+        "GitHub vibe ✔️",
+        "Még több interakció kell!",
+        "Profi vagy 🔥"
+      ];
+      alert(messages[Math.floor(Math.random() * messages.length)]);
+    }
+  </script>
+
+</body>
+</html>
