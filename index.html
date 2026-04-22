@@ -1,106 +1,119 @@
 <!DOCTYPE html>
 <html lang="hu">
 <head>
-  <meta charset="UTF-8">
-  <title>Menő Interaktív Oldal</title>
-  <style>
-    body {
-      margin: 0;
-      font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #0d1117, #161b22);
-      color: white;
-      text-align: center;
-    }
+<meta charset="UTF-8">
+<title>GitHub működése</title>
 
-    h1 {
-      margin-top: 40px;
-      font-size: 3em;
-      animation: glow 2s infinite alternate;
-    }
+<style>
+body {
+  margin: 0;
+  font-family: Arial;
+  background: #0d1117;
+  color: white;
+  text-align: center;
+}
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #58a6ff; }
-      to { text-shadow: 0 0 25px #58a6ff, 0 0 50px #58a6ff; }
-    }
+header {
+  padding: 20px;
+  background: #161b22;
+  font-size: 28px;
+  font-weight: bold;
+}
 
-    .card {
-      background: #21262d;
-      margin: 30px auto;
-      padding: 20px;
-      width: 300px;
-      border-radius: 15px;
-      transition: transform 0.3s, box-shadow 0.3s;
-      cursor: pointer;
-    }
+.section {
+  margin: 30px;
+  padding: 20px;
+  background: #21262d;
+  border-radius: 10px;
+  transition: 0.3s;
+}
 
-    .card:hover {
-      transform: scale(1.05) rotate(1deg);
-      box-shadow: 0 0 25px #58a6ff;
-    }
+.section:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 20px #58a6ff;
+}
 
-    button {
-      padding: 10px 20px;
-      border: none;
-      border-radius: 10px;
-      background: #238636;
-      color: white;
-      font-size: 16px;
-      cursor: pointer;
-      transition: 0.3s;
-    }
+button {
+  padding: 10px 20px;
+  margin: 10px;
+  border: none;
+  border-radius: 8px;
+  background: #238636;
+  color: white;
+  cursor: pointer;
+}
 
-    button:hover {
-      background: #2ea043;
-      transform: scale(1.1);
-    }
+button:hover {
+  background: #2ea043;
+}
 
-    #box {
-      width: 100px;
-      height: 100px;
-      background: #58a6ff;
-      margin: 30px auto;
-      border-radius: 10px;
-      position: relative;
-    }
-  </style>
+#log {
+  margin-top: 20px;
+  background: black;
+  padding: 10px;
+  height: 150px;
+  overflow-y: auto;
+  text-align: left;
+  font-family: monospace;
+}
+</style>
+
 </head>
 <body>
 
-  <h1>🔥 Interaktív Demo 🔥</h1>
+<header>💻 GitHub működése (interaktív)</header>
 
-  <div class="card" onclick="changeColor()">
-    Kattints rám! 🎨
-  </div>
+<div class="section">
+  <h2>📦 Mi az a repository?</h2>
+  <p>Ez egy projekt tároló, ahol a kódod van.</p>
+</div>
 
-  <button onclick="moveBox()">Mozgasd a dobozt 🚀</button>
+<div class="section">
+  <h2>📝 Commit</h2>
+  <p>Változtatások mentése.</p>
+  <button onclick="commit()">Commit</button>
+</div>
 
-  <div id="box"></div>
+<div class="section">
+  <h2>🚀 Push</h2>
+  <p>Feltöltés a GitHub szerverre.</p>
+  <button onclick="push()">Push</button>
+</div>
 
-  <button onclick="randomAlert()">Random meglepetés 😄</button>
+<div class="section">
+  <h2>🌿 Branch</h2>
+  <p>Külön fejlesztési ág.</p>
+  <button onclick="branch()">Új branch</button>
+</div>
 
-  <script>
-    function changeColor() {
-      const colors = ["#ff7b72", "#58a6ff", "#3fb950", "#d29922"];
-      document.body.style.background =
-        colors[Math.floor(Math.random() * colors.length)];
-    }
+<div id="log"></div>
 
-    function moveBox() {
-      const box = document.getElementById("box");
-      box.style.left = Math.random() * 300 + "px";
-      box.style.top = Math.random() * 200 + "px";
-    }
+<script>
+let hasCommit = false;
 
-    function randomAlert() {
-      const messages = [
-        "Ez menő volt 😎",
-        "GitHub vibe ✔️",
-        "Még több interakció kell!",
-        "Profi vagy 🔥"
-      ];
-      alert(messages[Math.floor(Math.random() * messages.length)]);
-    }
-  </script>
+function log(message) {
+  const logBox = document.getElementById("log");
+  logBox.innerHTML += "> " + message + "<br>";
+  logBox.scrollTop = logBox.scrollHeight;
+}
+
+function commit() {
+  hasCommit = true;
+  log("✔ Commit sikeres");
+}
+
+function push() {
+  if (hasCommit) {
+    log("🚀 Push a GitHub-ra");
+  } else {
+    log("⚠ Előbb commitolj!");
+  }
+}
+
+function branch() {
+  log("🌿 Új branch létrehozva");
+}
+</script>
 
 </body>
 </html>
